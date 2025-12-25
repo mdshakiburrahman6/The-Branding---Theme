@@ -3,6 +3,10 @@
 
 function the_branding_enqueues(){
 
+    /* ===========
+         CSS
+    ============*/ 
+
     // Enqueue Default Css
     wp_enqueue_style('the_branding_default', get_stylesheet_uri(), array(), '1.0.0', 'all');
 
@@ -19,6 +23,7 @@ function the_branding_enqueues(){
           JS
     ============*/ 
 
+
     // Default JQuerry
     wp_enqueue_script('jquerry');
 
@@ -29,6 +34,12 @@ function the_branding_enqueues(){
     // Bootstrap JS
     wp_register_script('the_branding_bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js');
     wp_enqueue_script('the_branding_bootstrap');
+
+
+    /* ===========
+        Fonts
+    ============*/ 
+
 
 }
 add_action('wp_enqueue_scripts', 'the_branding_enqueues');
