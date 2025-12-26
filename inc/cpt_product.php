@@ -60,8 +60,8 @@ function the_branding_product_meta_callback($post){
             </div>
 
             <div class="admin_product_mockup" style="width:50%">
-                <label for="product_brand">Mockup By</label>
-                <input type="text" name="product_brand" value="<?php echo esc_attr( $product_mockup ); ?>" id="product_brand" placeholder="Mockup designer name" style="width:100%; margin-top:5px">
+                <label for="product_mockup" style="font-family: 'Inter', sans-serif;">Mockup By</label>
+                <input type="text" name="product_mockup" value="<?php echo esc_attr( $product_mockup ); ?>" id="product_mockup" placeholder="Mockup designer name" style="width:100%; margin-top:5px">
             </div>
         </div>
     <?php
@@ -69,3 +69,24 @@ function the_branding_product_meta_callback($post){
 }
 
 
+// 4. Save Meta
+function the_branding_meta_save($post_id){
+    
+    //a. Chech exists nonch
+    if(!isset($_POST['the_branding_product_nonce_field']) && !wp_verify_nonce($_POST['the_branding_product_nonce_field'], 'the_branding_product_nonce')) return;
+    
+    //b. Prevent autosave
+    if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+
+    //c. Check user permission
+    if(!current_user_can('edit_post', $post_id)) return;
+
+    //d. Save Meta
+    if(isset($_POST['product_brand'])){
+        update_post_meta($post_id, '_product_brand', sanitize_text_field( $_POST['product_brand'] )) ;
+    }
+    if(isset($_POST['product_mockup'])){
+        update_post_meta($post_id, '_product_mockup', sanitize_text_field( $_POST['product_mockup'] )) ;
+    }
+}   
+add_action('save_post', 'the_branding_meta_save');
