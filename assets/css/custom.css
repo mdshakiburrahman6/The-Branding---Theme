@@ -7,8 +7,96 @@
     margin: 0;
     padding: 0;
 }
+.main-area{
+        width: var(--max-width);
+        margin: 50px auto;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        gap: 60px;
+}
+
+
+/*========================== 
+        Root Style         
+===========================*/
+:root{
+        --max-width:1400px;
+        --text-primary-color:black;
+}
+
+
+
 
 
 /*========================== 
         Shared Style         
 ===========================*/
+
+
+
+
+/*############################################################
+############################################################*/
+
+/*========================== 
+        Header Style         
+===========================*/
+.header-area{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+}
+/* Logo */
+.logo-area{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+}
+/* Category && Nav */
+.category-area ul, #nav ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 5px;
+        padding: 0;
+}
+.category-area ul li, #nav ul li{
+        list-style: none;
+        color: var(--text-primary-color);
+        text-transform: uppercase;
+}
+.category-area ul li a, #nav ul li a{
+        color: var(--text-primary-color);
+        text-decoration: none;
+        font-weight: 600;
+}
+/* Social */
+.social-area ul{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 8px;
+        padding: 0;
+}
+.social-area ul li{
+        list-style: none;
+}
+.social-area ul li a{
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+}
+
+
+
+/*========================== 
+        Content Style         
+===========================*/
+.content-area{
+        width: 100%;
+        height: 500px;
+        background-color: rgb(238, 238, 238);
+}

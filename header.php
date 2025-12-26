@@ -27,7 +27,7 @@
                     </ul>
                 </div>
                 <div class="menu-area">
-                    <div class="nav">
+                    <div class="nav" id="nav">
                          <ul>
                             <li><a href="#">About</a></li>
                             <li><a href="#">Contact</a></li>
@@ -36,9 +36,9 @@
                 </div>
                 <div class="social-area">
                     <ul>
-                        <li><a href="#">FB</a></li>
-                        <li><a href="#">IN</a></li>
-                        <li><a href="#">X</a></li>
+                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </section>
