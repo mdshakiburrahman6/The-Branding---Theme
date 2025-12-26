@@ -14,8 +14,8 @@
         <header>
             <section class="header-area font-primary">
                 <div class="logo-area"> 
-                    <p class="logo"><a href="#"><?php echo get_theme_mod('the_branding_logo'); ?></a></p>
-                    <p class="text">The world's best branding mockups and resources in one place.</p>
+                    <p class="logo"><a href="<?php home_url(); ?>"><?php echo get_theme_mod('the_branding_logo'); ?></a></p>
+                    <p class="text"><?php echo get_theme_mod('the_branding_desc') ?></p>
                 </div>
                 <div class="category-area">
                     <ul>

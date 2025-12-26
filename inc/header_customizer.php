@@ -21,9 +21,21 @@ function the_branding_header_customizer($wp_customizer){
     ));
     $wp_customizer->add_control('the_branding_logo', array(
         'label' => 'Header Logo',
-        'description' => 'You can change the logo form here.',
+        // 'description' => 'You can change the logo form here.',
         'section' => 'the_branding_header',
         'setting' => 'the_branding_logo',
+        'type' => 'text',
+    )); 
+
+    // Description
+    $wp_customizer->add_setting('the_branding_desc', array(
+        'default' => "The world's best branding mockups and resources in one place.",
+    ));
+    $wp_customizer->add_control('the_branding_desc', array(
+        'label' => 'Header Description',
+        // 'description' => 'You can change the description form here.',
+        'section' => 'the_branding_header',
+        'setting' => 'the_branding_desc',
         'type' => 'text',
     )); 
 
