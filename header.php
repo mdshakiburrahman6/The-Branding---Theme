@@ -12,9 +12,9 @@
 <body>
     <div class="main-area">
         <header>
-            <section class="header-area">
+            <section class="header-area font-primary">
                 <div class="logo-area"> 
-                    <h2 class="logo">The-Branding</h2>
+                    <p class="logo"><a href="#">The-Branding</a></p>
                     <p class="text">The world's best branding mockups and resources in one place.</p>
                 </div>
                 <div class="category-area">
@@ -28,10 +28,12 @@
                 </div>
                 <div class="menu-area">
                     <div class="nav" id="nav">
-                         <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
+                        <?php 
+                            wp_nav_menu(array(
+                                'theme_location' => 'main_menu',
+                                'menu_id' => 'nav',
+                            ));
+                        ?>
                     </div>
                 </div>
                 <div class="social-area">

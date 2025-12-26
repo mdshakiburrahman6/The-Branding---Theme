@@ -13,7 +13,8 @@
         display: flex;
         justify-content: start;
         align-items: start;
-        gap: 60px;
+        gap: 40px;
+        padding: 0 20px;
 }
 
 
@@ -23,6 +24,11 @@
 :root{
         --max-width:1400px;
         --text-primary-color:black;
+        --text-secoundary-color:rgb(46, 46, 46);
+        --p-font: "Inter", sans-serif;
+        --logo-font-size: 38px;
+        --text-font-size: 18px;
+        --hover-color: #4d4d4d;
 }
 
 
@@ -32,7 +38,11 @@
 /*========================== 
         Shared Style         
 ===========================*/
-
+.font-primary{
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
 
 
 
@@ -42,17 +52,34 @@
 /*========================== 
         Header Style         
 ===========================*/
+header{
+        width: 25%;
+}
 .header-area{
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
 }
 /* Logo */
 .logo-area{
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        /* gap: px; */
+}
+.logo-area a{
+        text-decoration: none;
+        color: var(--text-primary-color);
+        font-size: var(--logo-font-size);
+        font-weight: 500;
+}
+.logo-area .logo:hover{
+        cursor: pointer;
+}
+.logo-area .text{
+        font-size: var(--text-font-size);
+        /* color: var(--text-secoundary-color); */
+        font-weight: 400;
 }
 /* Category && Nav */
 .category-area ul, #nav ul{
@@ -60,7 +87,7 @@
         flex-direction: column;
         justify-content: start;
         align-items: start;
-        gap: 5px;
+        gap: 10px;
         padding: 0;
 }
 .category-area ul li, #nav ul li{
@@ -71,8 +98,66 @@
 .category-area ul li a, #nav ul li a{
         color: var(--text-primary-color);
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 500;
+        font-size: 18px;
 }
+.category-area ul li a:hover, #nav ul li a:hover{
+        color: var(--hover-color);
+}
+/* ==========================
+   Sub Menu Style
+========================== */
+
+/* Parent item indicator */
+#nav ul li.menu-item-has-children > a {
+    position: relative;
+    padding-right: 18px;
+}
+
+/* Small arrow */
+#nav ul li.menu-item-has-children > a::after {
+    content: "›";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+/* Submenu container */
+#nav ul li .sub-menu {
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px solid #e5e5e5;
+    display: none;
+    gap: 8px;
+}
+
+/* Show submenu on hover */
+#nav ul li:hover > .sub-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Submenu items */
+#nav ul li .sub-menu li {
+    list-style: none;
+}
+
+/* Submenu links */
+#nav ul li .sub-menu li a {
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: none;
+    color: var(--text-secoundary-color);
+}
+
+/* Hover effect */
+#nav ul li .sub-menu li a:hover {
+    color: var(--hover-color);
+}
+
 /* Social */
 .social-area ul{
         display: flex;
@@ -86,7 +171,7 @@
 }
 .social-area ul li a{
         text-decoration: none;
-        color: black;
+        color: #4d4d4d;
         font-size: 20px;
 }
 
@@ -95,8 +180,11 @@
 /*========================== 
         Content Style         
 ===========================*/
+main{
+        width: 75%;
+}
 .content-area{
         width: 100%;
-        height: 500px;
         background-color: rgb(238, 238, 238);
+        height: 500px;
 }
