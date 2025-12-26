@@ -29,3 +29,43 @@ function the_branding_cpt_product(){
 add_action('init', 'the_branding_cpt_product');
 
 
+// 2. Add Custom Meta Filed
+function add_fields_for_the_branding_product(){
+    add_meta_box(
+        'the_branding_product_id',
+        'More About Product',
+        'the_branding_product_meta_callback',
+        'the_branding_product',
+        'normal',
+        'low',
+    );
+
+}
+add_action('add_meta_boxes', 'add_fields_for_the_branding_product');
+
+
+// 3. Callback Function 
+function the_branding_product_meta_callback($post){
+
+    wp_nonce_field('the_branding_product_nonce', 'the_branding_product_nonce_field');
+
+    $product_brand = get_post_meta($post->ID, '_product_brand', true);
+    $product_mockup = get_post_meta($post->ID, '_product_mockup', true);
+
+    ?>
+        <div class="admin_product_more" style="display: flex; gap:20px">
+            <div class="admin_product_brand" style="width:50%">
+                <label for="product_brand" style="font-family: 'Inter', sans-serif;">Branding By</label>
+                <input type="text" name="product_brand" value="<?php echo esc_attr( $product_brand ); ?>" id="product_brand" placeholder="Brand Name" style="width:100%;  margin-top:5px">
+            </div>
+
+            <div class="admin_product_mockup" style="width:50%">
+                <label for="product_brand">Mockup By</label>
+                <input type="text" name="product_brand" value="<?php echo esc_attr( $product_mockup ); ?>" id="product_brand" placeholder="Mockup designer name" style="width:100%; margin-top:5px">
+            </div>
+        </div>
+    <?php
+
+}
+
+
