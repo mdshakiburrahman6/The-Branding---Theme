@@ -14,7 +14,7 @@
         <header>
             <section class="header-area font-primary">
                 <div class="logo-area"> 
-                    <p class="logo"><a href="#">The-Branding</a></p>
+                    <p class="logo"><a href="#"><?php echo get_theme_mod('the_branding_logo'); ?></a></p>
                     <p class="text">The world's best branding mockups and resources in one place.</p>
                 </div>
                 <div class="category-area">
@@ -37,11 +37,12 @@
                     </div>
                 </div>
                 <div class="social-area">
-                    <ul>
-                        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                    </ul>
+                    <?php 
+                        wp_nav_menu(array(
+                            'theme_location' => 'social_menu',
+                            'menu_id' => 'social-menu'
+                        ));
+                    ?>
                 </div>
             </section>
         </header>

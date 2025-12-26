@@ -159,17 +159,17 @@ header{
 }
 
 /* Social */
-.social-area ul{
+#social-menu{
         display: flex;
         justify-content: start;
         align-items: center;
         gap: 8px;
         padding: 0;
 }
-.social-area ul li{
+#social-menu li{
         list-style: none;
 }
-.social-area ul li a{
+#social-menu li a{
         text-decoration: none;
         color: #4d4d4d;
         font-size: 20px;
