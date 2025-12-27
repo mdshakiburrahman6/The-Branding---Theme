@@ -29,26 +29,6 @@ function the_branding_cpt_product(){
 add_action('init', 'the_branding_cpt_product');
 
 
-function the_branding_product_taxonomy() {
-
-    register_taxonomy(
-        'product_category', // taxonomy slug
-        'the_branding_product', // CPT slug
-        array(
-            'label'        => 'Product Categories',
-            'rewrite'      => array( 'slug' => 'product-category' ),
-            'hierarchical' => true, // category style (true = category, false = tag)
-            'show_admin_column' => true,
-            'show_ui'      => true,
-            'show_in_rest' => true, // Gutenberg support
-        )
-    );
-
-}
-add_action( 'init', 'the_branding_product_taxonomy' );
-
-
-
 
 // 2. Add Custom Meta Filed
 function add_fields_for_the_branding_product(){
@@ -120,3 +100,24 @@ function the_branding_meta_save($post_id){
     }
 }   
 add_action('save_post', 'the_branding_meta_save');
+
+
+
+// Taxonomies
+function the_branding_product_taxonomy() {
+
+    register_taxonomy(
+        'product_category', // taxonomy slug
+        'the_branding_product', // CPT slug
+        array(
+            'label'        => 'Product Categories',
+            'rewrite'      => array( 'slug' => 'product-category' ),
+            'hierarchical' => true, // category style (true = category, false = tag)
+            'show_admin_column' => true,
+            'show_ui'      => true,
+            'show_in_rest' => true, // Gutenberg support
+        )
+    );
+
+}
+add_action( 'init', 'the_branding_product_taxonomy' );
