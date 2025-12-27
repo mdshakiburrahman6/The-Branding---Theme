@@ -1,5 +1,4 @@
 <?php
-/* Template Name: Theme deafult file */
 
 // Theme Support
 function the_brand_theme_support(){

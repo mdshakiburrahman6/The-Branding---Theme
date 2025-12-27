@@ -1,6 +1,4 @@
 <?php
-/* Template Name: Main Theme Function file */
-
 
 /*===========================
         Include Files  

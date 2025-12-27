@@ -1,5 +1,4 @@
 <?php
-/* Template Name: Main Theme index file */
 ?>
 
 <!DOCTYPE html>

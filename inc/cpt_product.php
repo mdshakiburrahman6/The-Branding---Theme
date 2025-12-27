@@ -1,5 +1,4 @@
 <?php
-/* Template Name: Product CPT */
 
 // 1. Register CPT- Product
 function the_branding_cpt_product(){
@@ -49,11 +48,17 @@ function the_branding_product_meta_callback($post){
 
     wp_nonce_field('the_branding_product_nonce', 'the_branding_product_nonce_field');
 
+    $product_year = get_post_meta($post->ID, '_product_year', true);
     $product_brand = get_post_meta($post->ID, '_product_brand', true);
     $product_mockup = get_post_meta($post->ID, '_product_mockup', true);
 
     ?>
         <div class="admin_product_more" style="display: flex; gap:20px">
+            <div class="admin_product_brand" style="width:50%">
+                <label for="product_year" style="font-family: 'Inter', sans-serif;">Branding By</label>
+                <input type="text" name="product_year" value="<?php echo esc_attr( $product_year ); ?>" id="product_year" placeholder="Product Year" style="width:100%;  margin-top:5px">
+            </div>
+            
             <div class="admin_product_brand" style="width:50%">
                 <label for="product_brand" style="font-family: 'Inter', sans-serif;">Branding By</label>
                 <input type="text" name="product_brand" value="<?php echo esc_attr( $product_brand ); ?>" id="product_brand" placeholder="Brand Name" style="width:100%;  margin-top:5px">
@@ -73,7 +78,7 @@ function the_branding_product_meta_callback($post){
 function the_branding_meta_save($post_id){
     
     //a. Chech exists nonch
-    if(!isset($_POST['the_branding_product_nonce_field']) && !wp_verify_nonce($_POST['the_branding_product_nonce_field'], 'the_branding_product_nonce')) return;
+    if(!isset($_POST['the_branding_product_nonce_field']) || !wp_verify_nonce($_POST['the_branding_product_nonce_field'], 'the_branding_product_nonce')) return;
     
     //b. Prevent autosave
     if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
@@ -82,6 +87,9 @@ function the_branding_meta_save($post_id){
     if(!current_user_can('edit_post', $post_id)) return;
 
     //d. Save Meta
+    if(isset($_POST['product_year'])){
+        update_post_meta($post_id, '_product_year', sanitize_text_field( $_POST['product_year'] )) ;
+    }
     if(isset($_POST['product_brand'])){
         update_post_meta($post_id, '_product_brand', sanitize_text_field( $_POST['product_brand'] )) ;
     }

@@ -1,5 +1,4 @@
 <?php
-/* Template Name: for theme all Enqueues */
 
 function the_branding_enqueues(){
 
