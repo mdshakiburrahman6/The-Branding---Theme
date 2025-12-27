@@ -17,15 +17,37 @@ function the_branding_cpt_product(){
         'public'             => true,
         'publicly_queryable' => true,
         'has_archive'        => true,
-        'hierarchical'       => false,
+        'hierarchical'       => true,
         'show_ui'            => true,
         'exclude_from_search'=> false,
+        // 'taxonomies'         => array('category', 'post_tag'),
         'rewrite'            => array('slug' => 'products'),
         'supports'           => array('title', 'editor', 'thumbnail'),
     );
     register_post_type('the_branding_product', $args);
 }
 add_action('init', 'the_branding_cpt_product');
+
+
+function the_branding_product_taxonomy() {
+
+    register_taxonomy(
+        'product_category', // taxonomy slug
+        'the_branding_product', // CPT slug
+        array(
+            'label'        => 'Product Categories',
+            'rewrite'      => array( 'slug' => 'product-category' ),
+            'hierarchical' => true, // category style (true = category, false = tag)
+            'show_admin_column' => true,
+            'show_ui'      => true,
+            'show_in_rest' => true, // Gutenberg support
+        )
+    );
+
+}
+add_action( 'init', 'the_branding_product_taxonomy' );
+
+
 
 
 // 2. Add Custom Meta Filed

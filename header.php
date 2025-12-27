@@ -1,8 +1,11 @@
 <?php
+
+// Theme header
+
 ?>
 
 <!DOCTYPE html>
-<html lang="<?php language_attributes(); ?>">
+<html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,16 +16,29 @@
         <header>
             <section class="header-area font-primary">
                 <div class="logo-area"> 
-                    <p class="logo"><a href="<?php home_url(); ?>"><?php echo get_theme_mod('the_branding_logo'); ?></a></p>
+                    <p class="logo"><a href="<?php echo esc_url(home_url()); ?>"><?php echo get_theme_mod('the_branding_logo'); ?></a></p>
                     <p class="text"><?php echo get_theme_mod('the_branding_desc') ?></p>
                 </div>
                 <div class="category-area">
                     <ul>
+                        <?php 
+                            $terms = get_terms(array(
+                                'taxonomy' => 'product_category',
+                                'hide_empty' => true,
+                            ));
+
+                            if(!empty($terms) && !is_wp_error($terms)){
+                                foreach ($terms as $term){
+                                    ?>
+                                        <li><a href="<?php echo esc_url(get_term_link($term)); ?>"><?php echo esc_html( $term->name ); ?></a></li>
+                                    <?php
+                                }
+                            }
+                        ?>
+                        <!-- <li><a href="#">category</a></li>
                         <li><a href="#">category</a></li>
                         <li><a href="#">category</a></li>
-                        <li><a href="#">category</a></li>
-                        <li><a href="#">category</a></li>
-                        <li><a href="#">category</a></li>
+                        <li><a href="#">category</a></li> -->
                     </ul>
                 </div>
                 <div class="menu-area">
