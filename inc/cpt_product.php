@@ -32,6 +32,7 @@ add_action('init', 'the_branding_cpt_product');
 
 // 2. Add Custom Meta Filed
 function add_fields_for_the_branding_product(){
+    // For Aditional Detsils
     add_meta_box(
         'the_branding_product_id',
         'More About Product',
@@ -40,12 +41,21 @@ function add_fields_for_the_branding_product(){
         'normal',
         'low',
     );
+    // For Image Gallery
+    add_meta_box(
+        'the_branding_product_gallery',
+        'Product Gallery',
+        'the_branding_product_gallery_meta_callback',
+        'the_branding_product',
+        'side',
+        'low',
+    );
 
 }
 add_action('add_meta_boxes', 'add_fields_for_the_branding_product');
 
 
-// 3. Callback Function 
+// 3.1 Callback Function For Aditional Detsils
 function the_branding_product_meta_callback($post){
 
     wp_nonce_field('the_branding_product_nonce', 'the_branding_product_nonce_field');
@@ -75,6 +85,60 @@ function the_branding_product_meta_callback($post){
 
 }
 
+// 3.2 Callback Function For Image Gallery
+function the_branding_product_gallery_meta_callback($post){
+
+    wp_nonce_field('the_branding_gallery_nonce','the_branding_gallery_nonce_field');
+
+    $image_ids = get_post_meta($post->ID, '_branding_gallery', true);
+    $image_ids = is_array($image_ids) ? $image_ids : [] ;
+    
+    ?>
+        <div class="branding_gallery_display">
+        <ul id="branding-gallery-list" style="display:grid; grid-template-columns:repeat(3, 1fr);gap:10px;">
+            <?php foreach ($image_ids as $image_id): ?>
+                <li class="gallery-item" data-id="<?php echo esc_attr($image_id); ?>">
+                    <?php echo wp_get_attachment_image($image_id, 'thumbnail'); ?>
+                    <span class="remove-image">×</span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        </div>
+        <div class="branding_gallery_wrapper">
+            <input type="hidden" name="branding_gallery_input" id="branding_gallery_input" value="<?php echo esc_attr( implode(',',$image_ids) ); ?>">
+        </div>
+         <button type="button" class="button" id="add-branding-gallery">
+            Add Gallery
+        </button>
+
+
+
+        
+         <style>
+            #branding-gallery-list .gallery-item img{
+                width: 100%;
+                height: 100%;
+            }
+        #branding-gallery-list li {
+            position: relative;
+            cursor: move;
+        }
+        .remove-image {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #000;
+            color: #fff;
+            width: 18px;
+            height: 18px;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+    <?php
+
+}
 
 // 4. Save Meta
 function the_branding_meta_save($post_id){
@@ -97,6 +161,17 @@ function the_branding_meta_save($post_id){
     }
     if(isset($_POST['product_mockup'])){
         update_post_meta($post_id, '_product_mockup', sanitize_text_field( $_POST['product_mockup'] )) ;
+    }
+
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!isset($_POST['the_branding_gallery_nonce_field'])) return;
+    if (!wp_verify_nonce($_POST['the_branding_gallery_nonce_field'], 'the_branding_gallery_nonce')) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+
+    if (isset($_POST['branding_gallery_input'])) {
+        $ids = array_filter(array_map('intval', explode(',', $_POST['branding_gallery_input'])));
+        update_post_meta($post_id, '_branding_gallery', $ids);  
     }
 }   
 add_action('save_post', 'the_branding_meta_save');
@@ -121,3 +196,4 @@ function the_branding_product_taxonomy() {
 
 }
 add_action( 'init', 'the_branding_product_taxonomy' );
+

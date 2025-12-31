@@ -51,3 +51,43 @@ function the_branding_enqueues(){
 
 }
 add_action('wp_enqueue_scripts', 'the_branding_enqueues');
+
+
+
+/**
+ * ===========================================================================
+ *                                   Branging Product Gallery
+ * ===========================================================================
+ */
+
+function the_branding_admin_scripts($hook){
+
+    // Only load on CPT edit / add screen
+    if (
+        $hook !== 'post.php' &&
+        $hook !== 'post-new.php'
+    ) {
+        return;
+    }
+
+    global $post;
+    if (!$post || $post->post_type !== 'the_branding_product') {
+        return;
+    }
+
+    // WordPress media uploader
+    wp_enqueue_media();
+
+    // jQuery UI sortable (for reorder)
+    wp_enqueue_script('jquery-ui-sortable');
+
+    // Your gallery JS
+    wp_enqueue_script(
+        'branding-gallery',
+        get_template_directory_uri() . '/assets/js/branding-gallery.js',
+        ['jquery', 'jquery-ui-sortable'],
+        '1.0',
+        true
+    );
+}
+add_action('admin_enqueue_scripts', 'the_branding_admin_scripts');
