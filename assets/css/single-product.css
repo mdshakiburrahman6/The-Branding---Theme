@@ -1,0 +1,83 @@
+/* ===============================
+   SINGLE PRODUCT PAGE
+================================ */
+
+.tb-single {
+    padding: 60px 0;
+}
+
+.tb-container {
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 50px;
+}
+
+/* ===============================
+   GALLERY
+================================ */
+
+.tb-gallery {
+    display: flex;
+    gap: 20px;
+}
+
+.tb-thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tb-thumb {
+    width: 70px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    opacity: 0.6;
+    transition: 0.2s;
+}
+
+.tb-thumb.active,
+.tb-thumb:hover {
+    opacity: 1;
+    border: 2px solid #000;
+}
+
+.tb-main-image img {
+    max-width: 520px;
+    width: 100%;
+    display: block;
+}
+
+/* ===============================
+   PRODUCT INFO
+================================ */
+
+.tb-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.tb-desc {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.tb-info p {
+    margin-bottom: 10px;
+}
+
+.tb-download-btn {
+    display: block;
+    margin-top: 30px;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-weight: 600;
+}
+.tb-thumb.active {
+    border: 2px solid #000;
+    opacity: 1;
+}
