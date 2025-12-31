@@ -1,15 +1,26 @@
-<?php get_header(); ?>
+<?php
+    get_header();
+?>
 
 <main>
     <section class="content-area">
         <div class="products">
 
-            <?php if(have_posts()) :  
-                    while(have_posts()) : the_post();
+            <?php
+            
+            $products = new WP_Query([
+                'post_type'      => 'the_branding_product',
+                'posts_per_page' => -1, // ALL posts
+                'post_status'    => 'publish',
+            ]);
 
-                        $year = get_post_meta(get_the_ID(), '_product_year', true);
-                        $brand = get_post_meta(get_the_ID(), '_product_brand', true);
-                        $mockup = get_post_meta(get_the_ID(), '_product_mockup', true);
+             if ($products->have_posts()) :
+                while ($products->have_posts()) :
+                    $products->the_post();
+
+                    $year   = get_post_meta(get_the_ID(), '_product_year', true);
+                    $brand  = get_post_meta(get_the_ID(), '_product_brand', true);
+                    $mockup = get_post_meta(get_the_ID(), '_product_mockup', true);
 
                 ?>
                 
@@ -27,12 +38,14 @@
                 </div>
             <?php 
                     endwhile;
+                else :
+                    echo '<p>No products found.</p>';
                 endif;
             ?>    
         </div>
     </section>
 </main>
 
-
-<?php get_footer(); ?>
-
+<?php
+    get_footer();
+?>
