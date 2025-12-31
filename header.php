@@ -12,7 +12,7 @@
     <?php wp_head(); ?>
 </head>
 <body>
-    <div class="main-area">
+    <div class="main-area" id="fuck">
         <header>
             <section class="header-area font-primary">
                 <div class="logo-area"> 

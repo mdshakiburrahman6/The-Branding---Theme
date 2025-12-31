@@ -226,3 +226,49 @@ main{
 .product-year{
         margin-bottom: 0px;
 }
+
+
+
+
+/* ============================================
+===============================================
+            Responsive Design
+===============================================
+=============================================*/
+@media screen and (max-width:576px){
+    body .main-area{
+        width: 100%;
+        flex-direction: column;
+        margin: 30px auto;
+        gap: 20px;
+    }
+    header{
+        width: 100%;
+    }
+    main{
+        width: 100%;
+    }
+    .header-area{
+        width: 100%;
+        gap: 0px;
+    }
+    .content-area{
+        width: 100%;
+    }
+    .logo-area{
+        text-align: center;
+    }
+    .logo-area a{
+        font-size: 24px;
+    }
+    .social-area{
+        display: none;
+    }
+    .category-area ul, #nav ul,.menu-area .nav{
+        flex-direction: row;
+        justify-content: center;
+    }
+    .products{
+        grid-template-columns: repeat(1,1fr);
+    }
+}
