@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const newSrc = this.dataset.full;
 
-            // 🔥 IMPORTANT: remove srcset & sizes
+            // IMPORTANT: remove srcset & sizes
             mainImg.src = newSrc;
             mainImg.removeAttribute('srcset');
             mainImg.removeAttribute('sizes');
