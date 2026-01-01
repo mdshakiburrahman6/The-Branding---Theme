@@ -55,6 +55,10 @@
 header{
         width: 25%;
 }
+
+.mobile-header{
+        display: none;
+}
 .header-area{
         width: 100%;
         display: flex;
@@ -83,9 +87,6 @@ header{
         font-size: var(--text-font-size);
         /* color: var(--text-secoundary-color); */
         font-weight: 400;
-}
-.logo-area #menu_bar{
-        display: none;       
 }
 
 
@@ -244,11 +245,18 @@ main{
 ===============================================
 =============================================*/
 @media screen and (max-width:576px){
+    .desktop-header{
+        display: none;
+    }
+    .mobile-header{
+        display: block;
+    }
     body .main-area{
         width: 100%;
         flex-direction: column;
         margin: 20px auto;
         gap: 20px;
+        padding-top: 60px;
     }
     header{
         width: 100%;
@@ -279,17 +287,15 @@ main{
         width: 100%;
     }
     .category-area{
-        display: none;
-    }
-    .menu-area{
-        display: none;
-    }
-    .social-area{
-        display: none;
+        margin-top: 30px;
     }
     .category-area ul, #nav ul,.menu-area .nav{
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
+    }
+    .category-area ul li a, #nav ul li a{
+        font-size: 14px;
+        font-weight: 400;
     }
     .products{
         grid-template-columns: repeat(1,1fr);

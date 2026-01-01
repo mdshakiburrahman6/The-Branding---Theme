@@ -14,51 +14,104 @@
 <body>
     <div class="main-area" id="fuck">
         <header>
-            <section class="header-area font-primary">
-                <div class="logo-area"> 
-                    <p class="logo"><a href="<?php echo esc_url(home_url()); ?>"><?php echo get_theme_mod('the_branding_logo'); ?></a></p>
-                    <p class="text"><?php echo get_theme_mod('the_branding_desc') ?></p>
-                    <i id="menu_bar" class="fa-solid fa-bars-staggered"></i>
-                </div>
-                <div class="category-area">
-                    <ul>
-                        <?php 
-                            $terms = get_terms(array(
-                                'taxonomy' => 'product_category',
-                                'hide_empty' => true,
-                            ));
+            <!-- Desktop Header -->
+            <div class="desktop-header">
+                <section class="header-area font-primary">
+                    <div class="logo-area"> 
+                        <p class="logo"><a href="<?php echo esc_url(home_url()); ?>"><?php echo get_theme_mod('the_branding_logo'); ?></a></p>
+                        <p class="text"><?php echo get_theme_mod('the_branding_desc') ?></p>
+                    </div>
+                    <div class="category-area">
+                        <ul>
+                            <?php 
+                                $terms = get_terms(array(
+                                    'taxonomy' => 'product_category',
+                                    'hide_empty' => true,
+                                ));
 
-                            if(!empty($terms) && !is_wp_error($terms)){
-                                foreach ($terms as $term){
-                                    ?>
-                                        <li><a href="<?php echo esc_url(get_term_link($term)); ?>"><?php echo esc_html( $term->name ); ?></a></li>
-                                    <?php
+                                if(!empty($terms) && !is_wp_error($terms)){
+                                    foreach ($terms as $term){
+                                        ?>
+                                            <li><a href="<?php echo esc_url(get_term_link($term)); ?>"><?php echo esc_html( $term->name ); ?></a></li>
+                                        <?php
+                                    }
                                 }
-                            }
-                        ?>
-                        <!-- <li><a href="#">category</a></li>
-                        <li><a href="#">category</a></li>
-                        <li><a href="#">category</a></li>
-                        <li><a href="#">category</a></li> -->
-                    </ul>
-                </div>
-                <div class="menu-area">
-                    <div class="nav" id="nav">
+                            ?>
+                        </ul>
+                    </div>
+                    <div class="menu-area">
+                        <div class="nav" id="nav">
+                            <?php 
+                                wp_nav_menu(array(
+                                    'theme_location' => 'main_menu',
+                                    'menu_id' => 'nav',
+                                ));
+                            ?>
+                        </div>
+                    </div>
+                    <div class="social-area">
                         <?php 
                             wp_nav_menu(array(
-                                'theme_location' => 'main_menu',
-                                'menu_id' => 'nav',
+                                'theme_location' => 'social_menu',
+                                'menu_id' => 'social-menu'
                             ));
                         ?>
                     </div>
-                </div>
-                <div class="social-area">
-                    <?php 
-                        wp_nav_menu(array(
-                            'theme_location' => 'social_menu',
-                            'menu_id' => 'social-menu'
-                        ));
-                    ?>
-                </div>
-            </section>
-        </header>
+                </section>
+            </div>
+
+            <!-- Mobile Header -->
+            <div class="mobile-header">
+                <nav class="navbar bg-light fixed-top">
+                    <div class="container-fluid">
+                        <div class="logo-area"> 
+                            <p class="logo"><a href="<?php echo esc_url(home_url()); ?>"><?php echo get_theme_mod('the_branding_logo'); ?></a></p>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <div class="logo-area"> 
+                                <p class="logo"><a href="<?php echo esc_url(home_url()); ?>"><?php echo get_theme_mod('the_branding_logo'); ?></a></p>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="menu-area">
+                                <div class="nav" id="nav">
+                                    <?php 
+                                        wp_nav_menu(array(
+                                            'theme_location' => 'main_menu',
+                                            'menu_id' => 'nav',
+                                        ));
+                                    ?>
+                                </div>
+                            </div>
+                            <!-- Category -->
+                             <div class="category-area">
+                                <ul>
+                                    <?php 
+                                        $terms = get_terms(array(
+                                            'taxonomy' => 'product_category',
+                                            'hide_empty' => true,
+                                        ));
+
+                                        if(!empty($terms) && !is_wp_error($terms)){
+                                            foreach ($terms as $term){
+                                                ?>
+                                                    <li><a href="<?php echo esc_url(get_term_link($term)); ?>"><?php echo esc_html( $term->name ); ?></a></li>
+                                                <?php
+                                            }
+                                        }
+                                    ?>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- Botstrap Offcanvas -->
+             
+                        </header>
