@@ -269,14 +269,13 @@ main{
         gap: 0px;
     }
     .logo-area{
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-between;
-        align-items: center;
+        align-items: left;
         text-align: left;
+        gap: 20px;
     }
-    .logo-area .text{
-        display: none;
-    }
+
     .logo-area a{
         font-size: 24px;
     }
@@ -297,7 +296,17 @@ main{
         font-size: 14px;
         font-weight: 400;
     }
+    .social-area{
+        margin-top: 30px;
+    }
     .products{
         grid-template-columns: repeat(1,1fr);
+        gap: 20px;
+    }
+
+
+    /* Close Button */
+    .offcanvas-header .btn-close{
+        margin-bottom: 60px !important;
     }
 }

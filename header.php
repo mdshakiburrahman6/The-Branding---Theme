@@ -74,6 +74,7 @@
                         <div class="offcanvas-header">
                             <div class="logo-area"> 
                                 <p class="logo"><a href="<?php echo esc_url(home_url()); ?>"><?php echo get_theme_mod('the_branding_logo'); ?></a></p>
+                                <p class="text"><?php echo get_theme_mod('the_branding_desc') ?></p>
                             </div>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
@@ -106,6 +107,16 @@
                                         }
                                     ?>
                                 </ul>
+                            </div>
+
+                            <!-- Social Link -->
+                             <div class="social-area">
+                                <?php 
+                                    wp_nav_menu(array(
+                                        'theme_location' => 'social_menu',
+                                        'menu_id' => 'social-menu'
+                                    ));
+                                ?>
                             </div>
                         </div>
                         </div>
