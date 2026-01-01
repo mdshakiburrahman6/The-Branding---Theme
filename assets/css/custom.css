@@ -67,6 +67,9 @@ header{
         flex-direction: column;
         /* gap: px; */
 }
+.logo-area p{
+        margin-bottom: 0;
+}
 .logo-area a{
         text-decoration: none;
         color: var(--text-primary-color);
@@ -81,6 +84,11 @@ header{
         /* color: var(--text-secoundary-color); */
         font-weight: 400;
 }
+.logo-area #menu_bar{
+        display: none;       
+}
+
+
 /* Category && Nav */
 .category-area ul, #nav ul{
         display: flex;
@@ -239,7 +247,7 @@ main{
     body .main-area{
         width: 100%;
         flex-direction: column;
-        margin: 30px auto;
+        margin: 20px auto;
         gap: 20px;
     }
     header{
@@ -252,14 +260,29 @@ main{
         width: 100%;
         gap: 0px;
     }
-    .content-area{
-        width: 100%;
-    }
     .logo-area{
-        text-align: center;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+    .logo-area .text{
+        display: none;
     }
     .logo-area a{
         font-size: 24px;
+    }
+    .logo-area #menu_bar{
+        display: block;
+    }
+    .content-area{
+        width: 100%;
+    }
+    .category-area{
+        display: none;
+    }
+    .menu-area{
+        display: none;
     }
     .social-area{
         display: none;

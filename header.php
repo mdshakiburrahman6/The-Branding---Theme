@@ -18,6 +18,7 @@
                 <div class="logo-area"> 
                     <p class="logo"><a href="<?php echo esc_url(home_url()); ?>"><?php echo get_theme_mod('the_branding_logo'); ?></a></p>
                     <p class="text"><?php echo get_theme_mod('the_branding_desc') ?></p>
+                    <i id="menu_bar" class="fa-solid fa-bars-staggered"></i>
                 </div>
                 <div class="category-area">
                     <ul>
